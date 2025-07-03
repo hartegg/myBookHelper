@@ -33,7 +33,7 @@ You can start editing the page by modifying `src/app/page.tsx`. The page auto-up
 ## Key Features (as per PRD)
 
 -   **Book Structure:** Left sidebar with a hierarchical tree view (chapters, subchapters). Supports creating, editing, reordering (drag & drop), and toggling visibility.
--   **Content Editor:** Central content editor based on Suneditor-react (to be replaced/enhanced with `react-draft-wysiwyg` or similar for custom image handling) with support for H1-H6 headings, text editing, and image uploads.
+-   **Content Editor:** Central content editor based on Suneditor-react replaced/enhanced with `react-draft-wysiwyg` or similar for custom image handling) with support for H1-H6 headings, text editing, and image uploads.
 -   **Table of Contents:** Right sidebar displaying the TOC for the currently selected chapter, reflecting heading hierarchy (H1-H6). Supports toggling visibility and dynamic reordering.
 -   **Export Options:** Functionality to export the book in various formats (Word, HTML).
 -   **AI Integration:** Utilizes Genkit for AI-powered features.
@@ -62,5 +62,5 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 
 This project includes third-party open-source packages. See [third_party_licenses.md](./third_party_licenses.md) for details.
 
-This project uses [sharp](https://github.com/lovell/sharp), which bundles [libvips](https://github.com/libvips/libvips) licensed under LGPL-3.0-or-later. See `third_party_licenses.md` for details.
+This project uses [sharp](https://github.com/lovell/sharp), which bundles [libvips](https://github.com/libvips/libvips) licensed under LGPL-3.0-or-later. See [third_party_licenses.md](./third_party_licenses.md) for details.
 
