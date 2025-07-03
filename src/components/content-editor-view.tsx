@@ -966,7 +966,7 @@ const ContentEditorView = forwardRef(
       editorClassName: cn('rdw-editor-main', { 'wide-padding-active': isWidePaddingActive }),
       toolbarHidden: !isToolbarVisible,
       toolbar: {
-        options: ['inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
+        options: [ 'inline', 'blockType', 'fontSize', 'fontFamily', 'list', 'textAlign', 'colorPicker', 'link', 'embedded', 'emoji', 'image', 'remove', 'history'],
         inline: {
           inDropdown: false,
           options: ['bold', 'italic', 'underline', 'strikethrough', 'monospace', 'superscript', 'subscript'],

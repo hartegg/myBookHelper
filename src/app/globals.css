@@ -613,7 +613,10 @@ body {
 .exported-html-toc li a:hover {
   text-decoration: underline;
 }
-    
+
+a:hover {
+  text-decoration: underline;
+}
 
     
 

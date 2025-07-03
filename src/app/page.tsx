@@ -1480,7 +1480,7 @@ export default function ComposeWritePage() {
               onMouseDown={handleEditorBrowserResizeMouseDown}
               className="w-1.5 cursor-col-resize flex-shrink-0 bg-border/30 hover:bg-accent/70 active:bg-accent transition-colors duration-150 ease-in-out"
               title="Resize Editor and Browser"
-              style={{ height: '100%', zIndex: 100 }} // Osiguraj da hvatač zauzme cijelu visinu
+              style={{ height: '100%', zIndex: 10 }} // Osiguraj da resizer zauzme cijelu visinu
             />
 
             {/* Ovdje dodaj div za interni preglednik */}
@@ -1494,11 +1494,12 @@ export default function ComposeWritePage() {
             >
               {' '}
               {/* Postavi širinu i stilove za preglednik */}
-              <InternalBrowserView /> {/* Renderiraj komponentu preglednika */}
+              {/*<TestEditor />*/}
+               <InternalBrowserView />  {/* Renderiraj komponentu preglednika */}
             </div>
           </div>
         )}{' '}
-        {/* <--- Zatvarajuća zagrada je SADA na ispravnom mjestu, nakon drugog diva */}
+        {/* <--- Closing zagrada je SADA na ispravnom mjestu, nakon drugog diva */}
         {isRightSidebarOpen && (
           <div
             onMouseDown={handleRightResizeMouseDown}
@@ -1751,7 +1752,7 @@ export default function ComposeWritePage() {
                 <h3 className="text-lg font-medium">About myBookHelper</h3>
                 <p className="text-sm text-muted-foreground">myBookHelper - Your personal book writing assistant.</p>
                 <p className="text-xs text-muted-foreground">Version: 0.1.0 (Alpha)</p>
-                <p className="text-sm text-muted-foreground">GitHub Repository / Documentation (Links coming soon)</p>
+                <p className="text-sm text-muted-foreground"><a href="https://github.com/hartegg/myBookHelper" target="_blank">GitHub Repository</a></p>
               </div>
             </TabsContent>
           </Tabs>
