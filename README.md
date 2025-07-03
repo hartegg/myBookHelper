@@ -57,3 +57,10 @@ To learn more about Next.js, take a look at the following resources:
 -   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Licenses
+
+This project includes third-party open-source packages. See [third_party_licenses.md](./third_party_licenses.md) for details.
+
+This project uses [sharp](https://github.com/lovell/sharp), which bundles [libvips](https://github.com/libvips/libvips) licensed under LGPL-3.0-or-later. See `third_party_licenses.md` for details.
+
