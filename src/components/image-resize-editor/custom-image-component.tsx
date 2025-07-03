@@ -642,7 +642,7 @@ const CustomImageComponent: React.FC<CustomImageComponentProps> = (props) => {
       <div
         style={{
           padding: '10px',
-          border: '1px dashed orange',
+          border: '1px dashed brown',
           color: 'orange',
           minHeight: '50px',
           display: 'flex',
@@ -757,7 +757,7 @@ const CustomImageComponent: React.FC<CustomImageComponentProps> = (props) => {
       }}
       data-custom-image-block-key={block.getKey()}
     >
-      <img src={displaySrcForImgTag} alt={entityData?.alt || 'custom image'} style={imageStyle} draggable="false" />
+      <img src={displaySrcForImgTag} alt={entityData?.alt || 'custom image'} style={imageStyle} draggable="true" />
       {entityDescriptionFromData && (
         <div
           style={{
