@@ -395,7 +395,7 @@ export default function ComposeWritePage() {
   const [isFirstNodeModalOpen, setIsFirstNodeModalOpen] = useState(false);
   const [firstNodeTitleInput, setFirstNodeTitleInput] = useState('');
 
-  const [showTestEditorOverlay, setShowTestEditorOverlay] = useState(false);
+  // const [showTestEditorOverlay, setShowTestEditorOverlay] = useState(false);
 
   const [showInternalBrowser, setShowInternalBrowser] = useState(false);
   const [showImagePaste, setShowImagePaste] = useState(false);
@@ -608,7 +608,7 @@ export default function ComposeWritePage() {
     const initDb = async () => {
       setIsLoadingDB(true);
       try {
-        let loaded = await loadBookData();
+        const loaded = await loadBookData();
         // console.log("Loaded data from DB in initDb:", loaded ? JSON.parse(JSON.stringify(loaded)) : null);
 
         if (loaded) {

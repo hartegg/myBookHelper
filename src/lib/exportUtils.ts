@@ -200,7 +200,7 @@ function buildGlobalTocStructure(bookDataNodes: BookNode[], htmlIdMap: Map<strin
     const nodeHasActualTitle = node.title.trim() !== '';
     const nodeHasChildren = node.children && node.children.length > 0;
 
-    let contentHeadings: TocEntry[] = [];
+    const contentHeadings: TocEntry[] = [];
     const contentState = getContentState(node.content);
     if (contentState) {
       contentState.getBlocksAsArray().forEach((block) => {
@@ -324,7 +324,7 @@ async function nodeToHtmlRecursive(node: BookNode, currentLevel: number, htmlIdM
           }
 
           // Handle images from IndexedDB - we'll create a placeholder that gets replaced later
-          let imageSrc = data.src || data.link;
+          const imageSrc = data.src || data.link;
           if (imageSrc && imageSrc.startsWith('img_')) {
             return {
               element: 'img',
@@ -940,7 +940,7 @@ async function createDocxElementsFromContent(rawContent: RawDraftContentState, n
     // IZMIJENJENA LOGIKA ZA PRAZNE BLOKOVE - END
 
     if (childrenRuns.length > 0) {
-      let paragraphOptions: {
+      const paragraphOptions: {
         children: TextRun[];
         style?: string;
         bullet?: any;

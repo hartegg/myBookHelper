@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "start-app": "npm run dev",
     "dev": "npx next dev --turbopack -p 9003",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "genkit:dev": "genkit start -- tsx src/ai/dev.ts",

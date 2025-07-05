@@ -579,6 +579,7 @@ class TestEditor extends React.Component<{}, TestEditorState> {
         {/* <h3 style={{ textAlign: 'center', marginBottom: '15px', flexShrink: 0 }}>react-draft-wysiwyg Test Editor</h3> */}
         <div style={{ flexGrow: 1, border: '1px solid #eee', overflow: 'hidden' }}>
           <WysiwygEditor
+            
             editorState={editorState}
             readOnly={isAnyModalOpen} // Set readOnly based on modal state
             onEditorStateChange={(newState) => this.handleEditorStateChange(newState, 'editor_native_onChange')}
