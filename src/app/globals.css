@@ -33,6 +33,11 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --editor-toolbar-bg: #cceae7 !important;
+    --dropdown-selectedtext: #665 !important;
+    --rdw-dropdownoption-default: #665 !important;
+    --rdw-dropdownoption-highlight: #cceae7 !important;
+    --rwd-dropdownoption-highlight-bg: #665 !important;
 
     /* Sidebar specific variables for light theme */
     --sidebar-background: 274 30% 93%; /* Slightly more saturated purplish gray for sidebar */
@@ -49,7 +54,6 @@ body {
     --background: 220 10% 15%; /* Dark grayish blue */
     --foreground: 220 10% 85%; /* Lighter gray text */
     --card: 220 10% 20%; /* Slightly lighter dark grayish blue for cards */
-    --card-blue: 158, 190, 245; 
     --card-foreground: 220 10% 85%;
     --popover: 220 10% 20%;
     --popover-foreground: 220 10% 85%;
@@ -71,6 +75,11 @@ body {
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --editor-toolbar-bg: #315356 !important;
+    --dropdown-selectedtext: #665 !important;
+    --rdw-dropdownoption-default: #665 !important;
+    --rdw-dropdownoption-highlight: #665 !important;
+    --rwd-dropdownoption-highlight-bg: #cceae7 !important;
 
     /* Sidebar specific variables for dark theme */
     --sidebar-background: 220 10% 18%; /* Dark grayish blue for sidebar */
@@ -118,37 +127,21 @@ body {
   border-radius: 2px;
 }
 
+.rounded-lg {
+  border-radius: unset !important;
+}
+.pb-1\.5 {
+  padding-bottom: 0.33rem !important;
+}
 .drop-target-inside {
   background-color: hsl(var(--accent) / 0.15) !important;
   outline: 2px dashed hsl(var(--accent));
   outline-offset: -2px;
 }
 
-.imgDesc {
-  display: block !Important; 
-  text-align: center !Important;
-  font-Size: 0.8em !Important;
-  color: #667 !Important;
-  margin-Top: 5px !Important;
-  padding: 12px 5px !Important;
-  word-break: break-word !Important;
-  overflow: break-word !Important;
-  white-Space: pre-wrap !Important;
-  box-sizing: border-box !Important;
-
-}
-
 /* react-draft-wysiwyg custom styles */
 .rdw-editor-wrapper {
-  /* border-width: 1px;
-  border-style: solid;
-  border-color: hsl(var(--input)); */
-  /* border-radius: var(--radius); Use the global radius variable */
   position: relative;
-}
-
-.rounded-lg {
-  border-radius: unset !Important;
 }
 
 .rdw-editor-main {
@@ -156,7 +149,7 @@ body {
   padding-bottom: 0.5rem; /* pb-2 */
   padding-left: 1rem; /* px-4 */
   padding-right: 1rem; /* px-4 */
-  min-height: 700px; /* Reverted from height: 700px; */
+  min-height: 700px; 
   background-color: hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: 'Literata', serif;
@@ -171,54 +164,46 @@ body {
   padding-right: 6rem; /* px-24 */
 }
 
+/* THIS IS THE CRITICAL CHANGE FOR IMAGE SIZING */
+.rdw-editor-main img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+}
+/* End critical change */
+
 .rdw-editor-main figure,
 .rdw-editor-main .public-DraftStyleDefault-block figure {
   margin-left: auto;
   margin-right: auto;
   margin-top: 0.5rem; /* my-2 */
-  margin-bottom: 1rem !Important; /* my-2 */
+  margin-bottom: 1rem !important; /* my-2 */
   display: flex;
   justify-content: center;
 }
-
-.rdw-editor-main img,
-.rdw-editor-main .public-DraftStyleDefault-block img,
-.rdw-editor-main figure img,
-.rdw-image-alignment-wrapper img,
-.rdw-image-center-aligned img,
-.rdw-image-left-aligned img,
-.rdw-image-right-aligned img {
-  max-width: 100%; /* Fallback max-width, inline style from CustomImageComponent should override if more specific */
-  height: auto;    /* Fallback height, inline style from CustomImageComponent should override */
-  display: block !important; /* Keep important for consistent block display */
-  /* width: auto !important;  -- REMOVED to allow CustomImageComponent to control width */
-  /* max-height: 500px !important; -- REMOVED to allow CustomImageComponent to control height */
-  margin-left: auto !important; /* Keep for centering */
-  margin-right: auto !important; /* Keep for centering */
-  object-fit: contain; /* Good default for images, consistent with CustomImageComponent */
-}
-
 
 .rdw-image-alignment-wrapper,
 .rdw-image-center-aligned,
 .rdw-image-left-aligned,
 .rdw-image-right-aligned {
-    display: flex;
-    justify-content: center;
-    margin-top: 0.5rem; /* my-2 */
-    margin-bottom: 0.5rem; /* my-2 */
+  display: flex;
+  justify-content: center;
+  margin-top: 0.5rem; /* my-2 */
+  margin-bottom: 0.5rem; /* my-2 */
 }
 
-.demo-toolbar-custom{
-  margin-bottom: 0;
-  padding: 0.25rem; /* p-1 */
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-color: hsl(var(--input)); /* Explicitly use the input variable for border */
-  background-color: hsl(var(--card-blue)); /* Explicitly use card for background */
-  position: sticky;
-  top: 0;
-  z-index: 10;
+.rdw-dropdown-selectedtext {
+  color: var(--dropdown-selectedtext) !important;
+}
+.rdw-dropdownoption-default{
+  color: var(--rdw-dropdownoption-default) !important;
+}
+.rdw-dropdownoption-default .rdw-dropdownoption-highlight { 
+  color: var(--rdw-dropdownoption-highlight) !important;
+  background-color: var(--rwd-dropdownoption-highlight-bg) !important;
 }
 
 .rdw-editor-toolbar {
@@ -226,8 +211,10 @@ body {
   padding: 0.25rem; /* p-1 */
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-color: hsl(var(--input)); /* Explicitly use the input variable for border */
-  background-color: hsl(var(--card)); /* Explicitly use card for background */
+  /* border-color: hsl(var(--input)); Explicitly use the input variable for border */
+  /* background-color: hsl(var(--card)); Explicitly use card for background */
+   border-color: var(--editor-toolbar-bg) !important;
+   background-color: var(--editor-toolbar-bg) !important;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -241,300 +228,100 @@ body {
   border-style: solid;
   min-height: 30px; /* Added to ensure consistent height */
   min-width: 30px; /* Added to ensure consistent height */
-  width: 30px; 
+  width: 30px;
   padding: 0.125rem; /* Adjusted padding for better spacing */
   border-color: hsl(var(--input));
   background-color: transparent; /* Buttons are transparent on the toolbar */
   color: hsl(var(--foreground)); /* Text color for labels, and base for icon currentColor */
 }
 
-/* Explicitly style SVGs within toolbar options to use the wrapper's text color (currentColor) */
 .rdw-option-wrapper svg,
 .rdw-dropdown-wrapper svg {
   fill: currentColor;
   stroke: currentColor;
-  width: 1em; /* Ensure icons are consistently sized */
+  width: 1em; 
   height: 1em;
 }
 
-/* Hover state for buttons and dropdowns */
 .rdw-option-wrapper:hover,
 .rdw-dropdown-wrapper:hover {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
   background-color: hsl(var(--accent) / 0.1);
   border-color: hsl(var(--accent) / 0.5);
   color: hsl(var(--foreground));
 }
 .dark .rdw-option-wrapper:hover,
 .dark .rdw-dropdown-wrapper:hover {
-  color: hsl(var(--foreground)); /* Ensure text/icon remains light in dark mode hover */
+  color: hsl(var(--foreground));
 }
 
-
-/* Active state for buttons */
 .rdw-option-active {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
   background-color: hsl(var(--accent) / 0.25) !important;
   border-color: hsl(var(--accent)) !important;
 }
-.rdw-option-active { /* Light theme active button text */
-    color: hsl(var(--primary)) !important;
-}
-.dark .rdw-option-active { /* Dark theme active button text */
-    color: hsl(var(--foreground)) !important;
-}
 
-
-/* Dropdown panel itself */
 .rdw-dropdown-optionwrapper {
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
   border-radius: var(--radius); /* rounded-md */
   background-color: hsl(var(--popover));
   border: 1px solid hsl(var(--border));
   color: hsl(var(--popover-foreground));
 }
 
-/* Items in the dropdown list */
-.rdw-dropdownoption-default {
-  padding-left: 0.5rem; /* px-2 */
-  padding-right: 0.5rem; /* px-2 */
-  padding-top: 0.375rem; /* py-1.5 */
-  padding-bottom: 0.375rem; /* py-1.5 */
-  color: hsl(225, 5.4%, 43.9%);
+.rdw-image-modal,
+.rdw-link-modal,
+.rdw-embedded-modal {
+  background-color: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius); /* rounded-md */
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
 }
-
-.rdw-dropdownoption-default:hover {
-  /* background-color: hsl(var(--muted)); */ /* Commented out as per user request */
+.rdw-link-modal-input,
+.rdw-image-modal-url-input,
+.rdw-image-modal-size-input,
+.rdw-embedded-modal-link-input {
+  background-color: hsl(var(--input));
   color: hsl(var(--foreground));
-}
-
-.rdw-dropdownoption-highlight {
-  color: hsl(225, 5.4%, 43.9%) !important;
-  background: rgba(46, 49, 56, 1);
-}
-
-.rdw-dropdownoption-active { /* Currently selected item in an open dropdown */
-  background-color: hsl(var(--accent) / 0.25);
-}
-.rdw-dropdownoption-active { /* Light theme active dropdown item text */
-    color: hsl(var(--primary));
-}
-
-/* Combined rule for .dark .rdw-dropdownoption-active and .rdw-dropdown-selectedtext */
-.dark .rdw-dropdownoption-active,
-.rdw-dropdown-selectedtext {
-  color: hsl(225, 5.4%, 43.9%);
-}
-
-
-/* Selected text on hover of dropdown trigger */
-.rdw-dropdown-wrapper:hover .rdw-dropdown-selectedtext {
-  /* color will be inherited from .rdw-dropdown-wrapper:hover 'color' property */
-}
-
-/* Caret (triangle icon) in dropdowns */
-.rdw-dropdown-carettoclose,
-.rdw-dropdown-carettoopen {
-  border-left-color: transparent !important;
-  border-right-color: transparent !important;
-  margin-left: 0.25rem; /* Add some space between text and caret */
-}
-
-.rdw-dropdown-carettoclose {
-  border-top-color: currentColor !important;
-}
-.rdw-dropdown-carettoopen {
-  border-bottom-color: currentColor !important;
-}
-
-
-.rdw-image-modal, .rdw-link-modal, .rdw-embedded-modal {
-    background-color: hsl(var(--card));
-    color: hsl(var(--card-foreground));
-    border: 1px solid hsl(var(--border));
-    border-radius: var(--radius); /* rounded-md */
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
-}
-.rdw-link-modal-input, .rdw-image-modal-url-input, .rdw-image-modal-size-input, .rdw-embedded-modal-link-input {
-    background-color: hsl(var(--input));
-    color: hsl(var(--foreground));
-    /* border-color: hsl(var(--border)); */
-    border-color: #898989 !Important;
-    padding: 2px;
-    border-width: 1px; /* ensure other border properties are applied if needed */
+  border-color: #898989 !important;
+  padding: 2px;
+  border-width: 1px;
 }
 .rdw-image-modal-alt-input {
-  border: 1px solid #8d8d8d !Important;
-  padding: 2px !Important;
+  border: 1px solid #8d8d8d !important;
+  padding: 2px !important;
 }
 .rdw-image-modal-btn:disabled {
-  background-color:#c3c3c3 !Important;
+  background-color: #c3c3c3 !important;
 }
-.rdw-link-modal-btn, .rdw-image-modal-btn, .rdw-embedded-modal-btn {
-    /* background-color: hsl(var(--primary)); */
-    background-color:#767676 !Important;
-    color: hsl(var(--primary-foreground));
-    /* hover:opacity-90; Simplified hover from hover:bg-primary/90 */
+.rdw-link-modal-btn,
+.rdw-image-modal-btn,
+.rdw-embedded-modal-btn {
+  background-color: #767676 !important;
+  color: hsl(var(--primary-foreground));
 }
-.rdw-link-modal-btn:hover, .rdw-image-modal-btn:hover, .rdw-embedded-modal-btn:hover {
-    opacity: 0.9;
-}
-
-.rdw-image-modal-btn-section button:first-child {
-    margin-right: 0.25rem; /* mr-1 */
-}
-.rdw-link-modal-btn-section button:first-child {
-    margin-right: 0.25rem; /* mr-1 */
-}
-.rdw-embedded-modal-btn-section button:first-child {
-    margin-right: 0.25rem; /* mr-1 */
+.rdw-link-modal-btn:hover,
+.rdw-image-modal-btn:hover,
+.rdw-embedded-modal-btn:hover {
+  opacity: 0.9;
 }
 
 .public-DraftEditor-content {
   font-family: 'Literata', serif !important;
   color: hsl(var(--foreground)) !important;
-  opacity: 1 !important;
-  visibility: visible !important;
 }
 
-.public-DraftEditor-content[contenteditable=true] {
+.public-DraftEditor-content[contenteditable='true'] {
   line-height: 1.6;
-}
-
-.public-DraftStyleDefault-block {
-  margin: .4em 0 !important;
-}
-.public-DraftEditor-content ul,
-.public-DraftEditor-content ol,
-.public-DraftEditor-content blockquote,
-.public-DraftEditor-content pre {
-  margin-bottom: 0.5em;
-  color: hsl(var(--foreground)) !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  font-family: 'Literata', serif !important;
-}
-
-.rdw-editor-main .public-DraftEditor-content h1,
-.rdw-editor-main .public-DraftEditor-content h2,
-.rdw-editor-main .public-DraftEditor-content h3,
-.rdw-editor-main .public-DraftEditor-content h6,
-.rdw-editor-main div[id^="block-"] > h1,
-.rdw-editor-main div[id^="block-"] > h2,
-.rdw-editor-main div[id^="block-"] > h3,
-.rdw-editor-main div[id^="block-"] > h6 {
-  display: block !important;
-  font-family: 'Literata', serif !important;
-  color: hsl(var(--foreground)) !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  position: relative !important;
-  z-index: 1 !important;
-  text-indent: 0 !important;
-}
-
-.rdw-editor-main .public-DraftEditor-content h4,
-.rdw-editor-main div[id^="block-"] > h4 {
-  margin-top: 1.5em !important;
-  margin-bottom: 1.5em !important;
-  font-size: 1.1em !important;
-  font-weight: 700 !important;
-  line-height: 1.45 !important;
-  display: block !important;
-  font-family: 'Literata', serif !important;
-  color: hsl(var(--foreground)) !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  position: relative !important;
-  z-index: 1 !important;
-  text-indent: 0 !important;
-}
-
-.rdw-editor-main .public-DraftEditor-content h5,
-.rdw-editor-main div[id^="block-"] > h5 {
-  display: block !important;
-  font-family: 'Literata', serif !important;
-  color: hsl(var(--foreground)) !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  position: relative !important;
-  z-index: 1 !important;
-  margin-top: 1.5em !important;
-  margin-bottom: 1.5em !important;
-  font-size: 0.975em !important;
-  font-weight: 700 !important;
-  line-height: 1.5 !important;
-  text-indent: 15px !important;
-}
-
-.rdw-editor-main .public-DraftEditor-content h1,
-.rdw-editor-main div[id^="block-"] > h1 {
-  font-size: 1.5em !important;
-  font-weight: 700 !important;
-  line-height: 1.3 !important;
-  margin-top: 0.2em !important;
-  margin-bottom: 0.19em !important;
-}
-
-.rdw-editor-main .public-DraftEditor-content h2,
-.rdw-editor-main div[id^="block-"] > h2 {
-  font-size: 1.4em !important;
-  font-weight: 700 !important;
-  line-height: 1.35 !important;
-  margin-top: 0.2em !important;
-  margin-bottom: 0.18em !important;
-}
-
-.rdw-editor-main .public-DraftEditor-content h3,
-.rdw-editor-main div[id^="block-"] > h3 {
-  font-size: 1.2em !important;
-  font-weight: 700 !important;
-  line-height: 1.4 !important;
-  margin-top: 0.2em !important;
-  margin-bottom: 0.15em !important;
-}
-
-.rdw-editor-main .public-DraftEditor-content h6,
-.rdw-editor-main div[id^="block-"] > h6 {
-  font-size: 0.8em !important;
-  font-weight: 700 !important;
-  line-height: 1.55 !important;
-  margin-top: 0.2em !important;
-  margin-bottom: 0.08em !important;
-}
-
-.public-DraftStyleDefault-compact-paragraph > div {
-  margin-top: 0.1em !important;
-  margin-bottom: 0.1em !important;
-  line-height: 1.1 !important;
-  font-family: 'Literata', serif !important;
-  color: hsl(var(--foreground)) !important;
-}
-
-.public-DraftStyleDefault-indented-text-h5-style div {
-  padding-left: 20px !important;
-  font-size: 1em !important;
-  line-height: 1.6 !important;
-  margin-top: 0.5em !important;
-  margin-bottom: 0.5em !important;
-  font-family: 'Literata', serif !important;
-  color: hsl(var(--foreground)) !important;
-}
-
-.rdw-editor-main .public-DraftEditor-content li {
-  margin-bottom: 0.25em;
-  color: hsl(var(--foreground)) !important;
-  opacity: 1 !important;
-  visibility: visible !important;
-  font-family: 'Literata', serif !important;
-}
-
-.prose .rdw-editor-main img,
-.prose .rdw-editor-main video,
-.prose .rdw-editor-main iframe,
-.prose .rdw-editor-main .public-DraftStyleDefault-block img {
-    margin-top: 0;
-    margin-bottom: 0;
 }
 
 .compose-write-editor-wrapper {
@@ -545,51 +332,6 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-}
-
-.rdw-editor-main > div:first-child {
-  padding-top: 1px;
-}
-
-#editor-container-for-scroll {
-
-}
-
-.toc-item-wrapper {
-  position: relative;
-}
-
-.toc-children-container {
-  position: relative;
-}
-
-.toc-content-container {
-  position: relative;
-  z-index: 1;
-}
-
-.toc-vertical-line {
-  position: absolute;
-  width: 1px;
-  background-color: hsl(var(--muted-foreground));
-  z-index: 2;
-}
-
-.toc-branch-line-half {
-  top: 0;
-  height: 0.875rem;
-}
-
-.toc-branch-line-full {
-  top: 0;
-  bottom: 0;
-}
-
-.toc-horizontal-line {
-  position: absolute;
-  height: 1px;
-  background-color: hsl(var(--muted-foreground));
-  z-index: 2;
 }
 
 .editor-block-highlighted {
@@ -614,31 +356,7 @@ body {
   text-decoration: underline;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
-    
-
-    
-
-    
-
-
-    
-
-    
-
-    
-
-.align-left {
-  text-align: left;
-}
-
-.align-center {
-  text-align: center;
-}
-
-.align-right {
-  text-align: right;
+/* Fix for custom block rendering focus outline */
+[data-contents="true"] > div > div > div[data-block="true"] {
+    outline: none;
 }
