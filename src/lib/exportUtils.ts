@@ -445,8 +445,14 @@ export async function exportHtml(bookData: BookNode): Promise<void> {
     mainContentRendered += await nodeToHtmlRecursive(child, isSingleNodeExport ? -1 : 0, htmlIdMapStore);
   }
 
-  const bookTitleToUse = bookData.title || 'Document';
-  const filenameSlug = generateSlug(bookTitleToUse, 'book', 'export-html');
+  let bookTitleToUse = 'Untitled-Document';
+  if (bookData.children && bookData.children.length > 0 && bookData.children[0].title.trim()) {
+    bookTitleToUse = bookData.children[0].title.trim();
+  } else if (bookData.title.trim()) {
+    bookTitleToUse = bookData.title.trim();
+  }
+
+  const filenameSlugBase = generateSlug(bookTitleToUse, 'book', 'export-html');
 
   const fullHtml = `
     <!DOCTYPE html>
@@ -656,8 +662,19 @@ export async function exportHtml(bookData: BookNode): Promise<void> {
 
   // Process images to replace placeholders with actual data URIs
   console.log('[HTML Export] Processing images from IndexedDB...');
-  const processedHtml = await processHtmlImages(fullHtml);
 
+  // Dodavanje timestamp-a u formatu DD-MM-YYYY-THH-MM-SS
+  const now = new Date();
+  const day = String(now.getDate()).padStart(2, '0');
+  const month = String(now.getMonth() + 1).padStart(2, '0'); // getMonth() vraća 0-11
+  const year = now.getFullYear();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+  const timestamp = `${day}-${month}-${year}_T${hours}-${minutes}-${seconds}`;
+  const filenameSlug = `${filenameSlugBase}_myBookHelper_${timestamp}`;
+
+  const processedHtml = await processHtmlImages(fullHtml);
   const blob = new Blob([processedHtml], { type: 'text/html;charset=utf-8' });
   saveAs(blob, `${filenameSlug}.html`);
 }
@@ -685,10 +702,9 @@ async function nodeToMarkdownRecursive(node: BookNode, currentLevel: number): Pr
 }
 
 export async function exportMarkdown(bookData: BookNode): Promise<void> {
-  const bookTitle = bookData.title || 'myBookHelper Document';
+  let bookTitle = bookData.title || 'myBookHelper Document';
   const isSingleNodeExport = !(bookData.children && bookData.children.length > 0);
   const effectiveBookChildren = isSingleNodeExport ? [bookData] : bookData.children || [];
-
   const globalTocEntries = buildGlobalTocStructure(effectiveBookChildren, null, isSingleNodeExport ? 0 : 1);
 
   // TOC već sadrži naslov knjige
@@ -701,7 +717,15 @@ export async function exportMarkdown(bookData: BookNode): Promise<void> {
     }
   }
 
-  const filenameSlugBase = generateSlug(bookData.title || 'document', 'book', 'export-md');
+  let bookTitleToUse = 'Untitled-Document';
+  if (bookData.children && bookData.children.length > 0 && bookData.children[0].title.trim()) {
+    bookTitleToUse = bookData.children[0].title.trim();
+  } else if (bookData.title.trim()) {
+    bookTitleToUse = bookData.title.trim();
+  }
+
+  const filenameSlugBase = generateSlug(bookTitleToUse || 'document', 'book', 'export-md');
+ 
 
   // Dodavanje timestamp-a u formatu DD-MM-YYYY-THH-MM-SS
   const now = new Date();
@@ -1043,12 +1067,6 @@ export async function exportDocx(bookData: BookNode): Promise<void> {
   try {
     let bookTitleToUse = 'Document';
 
-    /*  if (bookData.children && bookData.children.length > 0 && bookData.children[0].title.trim()) {
-      bookTitleToUse = bookData.children[0].title.trim();
-    } else if (bookData.title.trim()) {
-      bookTitleToUse = bookData.title.trim();
-    } */
-
     if (bookData.children && bookData.children.length > 0 && bookData.children[0].title.trim()) {
       bookTitleToUse = bookData.children[0].title.trim();
     } else if (bookData.title.trim()) {
@@ -1148,14 +1166,15 @@ export async function exportDocx(bookData: BookNode): Promise<void> {
 
 export function exportProjectData(bookData: BookNode): void {
   let titleForFilename = 'untitled-book';
+
   if (bookData.children && bookData.children.length > 0 && bookData.children[0].title.trim()) {
-    titleForFilename = bookData.children[0].title;
+    titleForFilename = bookData.children[0].title.trim();
   } else if (bookData.title.trim()) {
-    titleForFilename = bookData.title;
+    titleForFilename = bookData.title.trim();
   }
 
   const bookTitleSlug = generateSlug(titleForFilename, 'book', 'export');
-  const filename = `${bookTitleSlug}.myBookHelper.json`;
+  const filename = `${bookTitleSlug}-myBookHelper.json`;
 
   let dataToExport = bookData;
   const isValidRootContent =
