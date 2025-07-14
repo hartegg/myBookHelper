@@ -205,6 +205,7 @@ body {
   color: var(--rdw-dropdownoption-highlight) !important;
   background-color: var(--rwd-dropdownoption-highlight-bg) !important;
 }
+  
 
 .rdw-editor-toolbar {
   margin-bottom: 0;
