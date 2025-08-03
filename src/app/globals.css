@@ -102,6 +102,34 @@ body {
   }
 }
 
+.rdw-editor-main h1,
+.rdw-editor-main h2,
+.rdw-editor-main h3,
+.rdw-editor-main h4,
+.rdw-editor-main h5,
+.rdw-editor-main h6 {
+  font-family: 'Belleza', sans-serif;
+  color: hsl(var(--primary));
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  line-height: 1.3;
+}
+
+.rdw-editor-main h1 { font-size: 2.25em; }
+.rdw-editor-main h2 { font-size: 2em; }
+.rdw-editor-main h3 { font-size: 1.75em; }
+.rdw-editor-main h4 { font-size: 1.5em; }
+.rdw-editor-main h5 { font-size: 1.25em; }
+.rdw-editor-main h6 { font-size: 1.1em; font-weight: bold; }
+
+
+.rdw-editor-main.wide-padding-active {
+  padding-top: 0;
+  padding-bottom: 0.5rem; /* pb-2 */
+  padding-left: 6rem; /* px-24 */
+  padding-right: 6rem; /* px-24 */
+}
+
 /* Styles for Drag & Drop indicators */
 .drop-target-before::before {
   content: '';
